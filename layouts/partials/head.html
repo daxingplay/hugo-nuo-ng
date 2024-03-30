@@ -48,7 +48,7 @@
     <meta name="twitter:site" content="@{{ .Site.Params.twitter | default $gohugoio }}">
     <meta name="twitter:title" content="{{ .Title }}">
     <meta name="twitter:description" content="{{ .Summary | plainify }}">
-    <meta name="twitter:image" content="{{ $avatar.RelPermalink }}">
+    <meta name="twitter:image" content="{{ .Site.Params.avatar | relURL }}">
   {{ end }}
 
   <!-- Facebook Open Graph -->
@@ -56,7 +56,7 @@
   <meta property="og:title" content="{{ .Title }}">
   <meta property="og:description" content="{{ .Summary | plainify }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:image" content="{{ if isset .Params "cover" }}{{ .Params.cover | absURL }}{{ else }}{{ $avatar.RelPermalink }}{{ end }}">
+  <meta property="og:image" content="{{ if isset .Params "cover" }}{{ .Params.cover | absURL }}{{ else }}{{ .Site.Params.avatar | relURL }}{{ end }}">
 
 {{ else }}
 
@@ -69,14 +69,14 @@
   <meta name="twitter:site" content="@{{ .Site.Params.twitter | default $gohugoio }}">
   <meta name="twitter:title" content="{{ if isset .Site.Params "seotitle" }}{{ .Site.Params.seotitle }}{{ else }}{{ .Site.Title }}{{ end }}">
   {{ with .Site.Params.description }}<meta name="twitter:description" content="{{ . }}">{{ end }}
-  <meta name="twitter:image" content="{{ $avatar.RelPermalink }}">
+  <meta name="twitter:image" content="{{ .Site.Params.avatar | relURL }}">
 
   <!-- Facebook Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ if isset .Site.Params "seotitle" }}{{ .Site.Params.seotitle }}{{ else }}{{ .Site.Title }}{{ end }}">
   {{ with .Site.Params.description }}<meta property="og:description" content="{{ . }}">{{ end }}
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:image" content="{{ $avatar.RelPermalink }}">
+  <meta property="og:image" content="{{ .Site.Params.avatar | relURL }}">
 
 {{ end }}
 
@@ -122,7 +122,7 @@
 <!-- FontAwesome is not preloaded because we use integrity and https://bugs.chromium.org/p/chromium/issues/detail?id=677022  -->
 {{ with .Site.Params.customStyle }}<link rel="preload" href="{{ $customStyle.RelPermalink }}" as="style">{{ end }}
 <link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
-<link rel="preload" href="{{ $avatar.RelPermalink }}" as="image">
+<link rel="preload" href="{{ .Site.Params.avatar | relURL }}" as="image">
 <link rel="preload" href="{{ $bg.RelPermalink }}" as="image">
 
 <!-- Main Styles -->

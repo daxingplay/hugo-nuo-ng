@@ -2,7 +2,7 @@
 {{- $avatar := resources.Get (.Site.Params.avatar | default "images/avatar.png") -}}
 
 <header class="site-header">
-  <a href="{{ .Site.BaseURL }}"><img class="avatar" src="{{ $avatar.RelPermalink }}" alt="Avatar"></a>
+  <a href="{{ .Site.BaseURL }}"><img class="avatar" src="{{ .Site.Params.avatar | relURL }}" alt="Avatar"></a>
   {{  if eq .Kind "home" }}
   <h1 class="title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
   {{ else }}
